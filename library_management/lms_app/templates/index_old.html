@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library information management</title>
+  </head>
+  <body>
+    <h1>Hello World And Welcome to Library</h1>
+    <a href="/shop">Shopping</a>
+
+    <form action="/save/" method="POST">
+      {% csrf_token %}
+      <label> Customer Name </label>
+      <table>
+        <tbody>
+          <tr>
+            <td><label> Student Name</label></td>
+            <td><input type="text" name = "student_name"></td>
+          </tr>
+
+          <tr>
+            <td><label > Student Age</label></td>
+            <td><input type="text" name="student_age"></td>
+          </tr>
+
+          <tr>
+            <td colspan="2"><button type="submit"> Submit</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </form>
+  </body>
+</html>
