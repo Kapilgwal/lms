@@ -1,7 +1,45 @@
 <!DOCTYPE html>
-{% extends "index.html" %}
-{% load static %}
+{% extends "index.html" %} {% load static %} {% block main_content %}
+<main role="main">
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-4">Hello, Readers!</h1>
 
-{% block main_content %}
-<h1>I am in Home Page</h1>
+      <p>Welcome to city Library. We have a large collections of books</p>
+      <p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">
+          Browse our collection
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Why reading is important?</h2>
+        <p>Reading is a very good habit</p>
+      </div>
+      <div class="col">
+        <h2>Key benefits</h2>
+        <ul>
+          <li>Increase your vocabulary</li>
+          <li>Second Item</li>
+          <li>Third Item</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h2>Thought for the day</h2>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<hr>
+
+<footer class="container">
+  <p>Some footer content</p>
+</footer>
+
 {% endblock %}

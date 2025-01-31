@@ -1,7 +1,100 @@
 <!DOCTYPE html>
-{% extends "index.html" %}
-{% load static %}
-
+{% extends "index.html" %} 
+{% load static %} 
 {% block main_content %}
-<h1>I am in readers page</h1>
+
+<div class="container-flex text-center justify-content-center align-items-center" style="background-color: skyblue">
+  <div class="row justify-content-center align-middle" style="margin-top: 10px; height: 60px; vertical-align: middle">
+    <div class="col-md-4 text-light" style="background: #4b088a">
+      <h4>Register New Reader</h4>
+    </div>
+    <div class="col-md-8">
+      <h4>Search Readers</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="container">
+        <form class="d-flex" action="/readers/add" method="POST">
+          {% csrf_token %}
+          <table>
+            <tr>
+              <td>Name:</td>
+              <td><input class="form-control" type="text" name="reader_name" /></td>
+            </tr>
+            <tr>
+              <td>Reference ID:</td>
+              <td><input class="form-control" type="text" name="reference_id" /></td>
+            </tr>
+            <tr>
+              <td>Contact:</td>
+              <td><input class="form-control" type="text" name="reader_contact" /></td>
+            </tr>
+            <tr>
+              <td>Address:</td>
+              <td><textarea class="form-control" name="reader_address"></textarea></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <button class="btn btn-primary" type="submit">Save</button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="row">
+        <nav class="navbar bg-body-light">
+          <div class="container-fluid justify-content-center align-items-center">
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </nav>
+      </div>
+
+      <div class="row">
+        <p>{{ readers | length }} readers subscribed</p>
+      </div>
+
+      <div class="row">
+        <div class="container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Reader ID</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Reference ID</th>
+                <th>Reader Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for reader in readers %}
+                <tr>
+                  <td>{{ reader.id }}</td>
+                  <td>
+                    {% if reader.active %}
+                      <span class="btn btn-success">{{ reader.reader_name }}</span>
+                    {% else %}
+                      <span class="btn btn-secondary">{{ reader.reader_name }}</span>
+                    {% endif %}
+                  </td>
+                  <td>{{ reader.reader_contact }}</td>
+                  <td>{{ reader.reference_id }}</td>
+                  <td>{{ reader.reader_address }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

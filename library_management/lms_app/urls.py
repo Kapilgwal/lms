@@ -7,5 +7,5 @@ urlpatterns = [
     path('returns/',returns),
     path('my_bag/',my_bag),
     path('readers/',readers),
-    
+    path('readers/add',save_reader),
 ]
